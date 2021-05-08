@@ -39,8 +39,8 @@ public class CarController {
         return carService.save(requestCar);
     }
 
-    @DeleteMapping("/carId}")
-    public void deleteUser(@PathVariable int carId) {
+    @DeleteMapping("/{carId}")
+    public void delete(@PathVariable int carId) {
         carService.deleteCar(carId);
     }
 }

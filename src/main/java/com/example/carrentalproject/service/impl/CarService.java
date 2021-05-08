@@ -69,7 +69,6 @@ public class CarService implements CarServices {
         }
     }
 
-
     @Override
     public void deleteCar(int carId) {
         var car = carRepository.findById(carId).orElseThrow(() -> new IllegalArgumentException("Id is invalid"));

@@ -34,7 +34,7 @@ public class Car {
     private boolean featured;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "brandId",insertable = false,updatable = false)
+    @JoinColumn(name = "brandId", insertable = false, updatable = false)
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     private Brand brand;
