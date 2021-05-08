@@ -1,41 +1,46 @@
 package com.example.carrentalproject.controller;
 
 import com.example.carrentalproject.model.Car;
+import com.example.carrentalproject.service.SaveCarRequest;
 import com.example.carrentalproject.service.impl.CarService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/cars")
 public class CarController {
-    @Autowired
+    //   @Autowired Nuk keshillohet te behet me autowired por me konstuktor
     private CarService carService;
 
-    @PostMapping("car")
-    public Car addcar(@RequestBody Car car) {
-        return carService.addCar(car);
+    public CarController(final CarService carService) {
+        this.carService = carService;
     }
 
-    @GetMapping("cars")
+    @PostMapping
+    public int addcar(@RequestBody SaveCarRequest request) {
+        return carService.save(request);
+    }
+
+    @GetMapping
     public List<Car> getCars() {
-        return carService.getCars();
+        return carService.findAll();
     }
 
-    @GetMapping("cars/{carId}")
-    public ResponseEntity<?> getCarById(@PathVariable Integer carId) {
-        return carService.getCarById(carId);
+    @GetMapping("/{carId}")
+    public Optional<Car> findById(@PathVariable int carId) {
+        return carService.findById(carId);
     }
 
-    @PutMapping("car/update/{carId}")
-    public ResponseEntity<?> updateCar(@PathVariable Integer carId, @Valid @RequestBody Car carRequest) {
-        return carService.updateCar(carId, carRequest);
+    @PutMapping
+    public int updateCar(@Valid @RequestBody SaveCarRequest requestCar) {
+        return carService.save(requestCar);
     }
 
-    @DeleteMapping("cars/delete/{carId}")
-    public ResponseEntity<?> deleteUser(@PathVariable Integer carId) {
-        return carService.deleteCar(carId);
+    @DeleteMapping("/carId}")
+    public void deleteUser(@PathVariable int carId) {
+        carService.deleteCar(carId);
     }
 }

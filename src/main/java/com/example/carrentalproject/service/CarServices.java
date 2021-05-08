@@ -4,15 +4,15 @@ import com.example.carrentalproject.model.Car;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CarServices {
-    public Car addCar(Car car);
 
-    public List<Car> getCars();
+    public List<Car> findAll();
 
-    public ResponseEntity<?> getCarById(Integer carId);
+    public Optional<Car> findById(Integer carId);
 
-    public ResponseEntity<?> updateCar(Integer carId, Car carRequest);
+    public int save(SaveCarRequest saveCarRequest);
 
-    public ResponseEntity<?> deleteCar(Integer carId);
+    public void deleteCar(int carId);
 }

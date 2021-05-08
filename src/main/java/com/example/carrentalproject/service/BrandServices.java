@@ -4,16 +4,16 @@ import com.example.carrentalproject.model.Brand;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BrandServices {
-    public Brand addBrand(Brand brand);
 
-    public List<Brand> getBrands();
+    public List<Brand> findAll();
 
-    public ResponseEntity<?> getBrandById(Integer brandId);
+    public Optional<Brand> findAllById(int brandId);
 
-    public ResponseEntity<?> updateBrand(Integer brandId, Brand brandRequest);
+    public int save(SaveBrandRequest request);
 
-    public ResponseEntity<?> deleteBrand(Integer brandId);
+    public void  delete (int brandId);
 
 }

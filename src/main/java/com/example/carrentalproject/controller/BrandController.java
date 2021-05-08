@@ -1,6 +1,7 @@
 package com.example.carrentalproject.controller;
 
 import com.example.carrentalproject.model.Brand;
+import com.example.carrentalproject.service.SaveBrandRequest;
 import com.example.carrentalproject.service.impl.BrandService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,35 +9,40 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping("/api/brands")
 public class BrandController {
-    @Autowired
+
     private BrandService brandService;
 
-    @PostMapping("brand/create")
-    public Brand addBrand(@RequestBody Brand brand) {
-        return brandService.addBrand(brand);
+    public BrandController(BrandService brandService) {
+        this.brandService = brandService;
     }
 
-    @GetMapping("brands")
+    @PostMapping
+    public int create(@RequestBody SaveBrandRequest request) {
+        return brandService.save(request);
+    }
+
+    @GetMapping
     public List<Brand> getBrands() {
-        return brandService.getBrands();
+        return brandService.findAll();
     }
 
-    @GetMapping("brands/{brandId}")
-    public ResponseEntity<?> getBrandById(@PathVariable Integer brandId) {
-        return brandService.getBrandById(brandId);
+    @GetMapping("/{brandId}")
+    public Optional<Brand> getBrandById(@PathVariable Integer brandId) {
+        return brandService.findAllById(brandId);
     }
 
-    @PutMapping("brand/update/{brandId}")
-    public ResponseEntity<?> updateBrand(@PathVariable Integer brandId, @Valid @RequestBody Brand brandRequest) {
-        return brandService.updateBrand(brandId, brandRequest);
+    @PutMapping("/{brandId}")
+    public int update(@PathVariable SaveBrandRequest request) {
+        return brandService.save(request);
     }
 
-    @DeleteMapping("brand/delete/{brandId}")
-    public ResponseEntity<?> deleteBrand(@PathVariable Integer brandId) {
-        return brandService.deleteBrand(brandId);
+    @DeleteMapping("/{brandId}")
+    public void delete(@PathVariable int brandId) {
+        brandService.delete(brandId);
     }
-
 }

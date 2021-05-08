@@ -1,6 +1,9 @@
 package com.example.carrentalproject.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -9,11 +12,13 @@ import java.sql.Time;
 @Entity
 @Table(name = "reservations")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "reservationId")
     private int id;
 
     private String pickUpLocation;
@@ -21,13 +26,18 @@ public class Reservation {
     private Time pickUpTime;
     private int finalPrice;
     private String comment;
+    private Date createdAt;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "car_carId", insertable = false, updatable = false)
+    @JoinColumn(name = "carId", insertable = false, updatable = false)
     private Car car;
 
+    private int carId;
+
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_clientId", insertable = false, updatable = false)
+    @JoinColumn(name = "clientId", insertable = false, updatable = false)
     private Client client;
+
+    private int clientId;
 
 }
