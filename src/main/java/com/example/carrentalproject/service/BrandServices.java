@@ -1,7 +1,6 @@
 package com.example.carrentalproject.service;
 
 import com.example.carrentalproject.model.Brand;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 import java.util.Optional;

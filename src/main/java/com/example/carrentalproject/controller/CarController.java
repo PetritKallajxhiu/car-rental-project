@@ -41,6 +41,6 @@ public class CarController {
 
     @DeleteMapping("/{carId}")
     public void delete(@PathVariable int carId) {
-        carService.deleteCar(carId);
+        carService.delete(carId);
     }
 }

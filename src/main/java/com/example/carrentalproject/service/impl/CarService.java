@@ -29,7 +29,7 @@ public class CarService implements CarServices {
     }
 
     @Override
-    public Optional<Car> findById(Integer carId) {
+    public Optional<Car> findById(int carId) {
         return carRepository.findById(carId);
     }
 
@@ -70,7 +70,7 @@ public class CarService implements CarServices {
     }
 
     @Override
-    public void deleteCar(int carId) {
+    public void delete(int carId) {
         var car = carRepository.findById(carId).orElseThrow(() -> new IllegalArgumentException("Id is invalid"));
         carRepository.delete(car);
     }
