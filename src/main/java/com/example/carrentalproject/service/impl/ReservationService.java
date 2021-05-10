@@ -1,15 +1,11 @@
 package com.example.carrentalproject.service.impl;
 
-import com.example.carrentalproject.model.Brand;
 import com.example.carrentalproject.model.Reservation;
-import com.example.carrentalproject.repository.BrandRepository;
 import com.example.carrentalproject.repository.ReservationRepository;
 import com.example.carrentalproject.service.ReservationServices;
-import com.example.carrentalproject.service.SaveBrandRequest;
 import com.example.carrentalproject.service.SaveReservationRequest;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -17,9 +13,9 @@ import java.util.Optional;
 @Service
 public class ReservationService implements ReservationServices {
 
-    private ReservationRepository  reservationRepository;
+    private ReservationRepository reservationRepository;
 
-    public ReservationService(ReservationRepository  reservationRepository) {
+    public ReservationService(ReservationRepository reservationRepository) {
         this.reservationRepository = reservationRepository;
     }
 
@@ -45,7 +41,7 @@ public class ReservationService implements ReservationServices {
             reservation.get().setCarId(request.getCarId());
             reservation.get().setClientId(request.getClientId());
 
-             reservationRepository.save(reservation.get());
+            reservationRepository.save(reservation.get());
             return reservation.get().getId();
         } else {
             var newReservation = Reservation.builder()
@@ -56,7 +52,7 @@ public class ReservationService implements ReservationServices {
                     .comment(request.getComment())
                     .clientId(request.getClientId())
                     .carId(request.getCarId())
-                    .createdAt(request.getCreatedAt())
+                    .createdAt(new Date())
                     .build();
             reservationRepository.save(newReservation);
             return newReservation.getId();

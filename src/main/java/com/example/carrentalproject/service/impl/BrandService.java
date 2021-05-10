@@ -1,13 +1,9 @@
 package com.example.carrentalproject.service.impl;
 
 import com.example.carrentalproject.model.Brand;
-import com.example.carrentalproject.model.Car;
 import com.example.carrentalproject.repository.BrandRepository;
 import com.example.carrentalproject.service.BrandServices;
 import com.example.carrentalproject.service.SaveBrandRequest;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -50,8 +46,7 @@ public class BrandService implements BrandServices {
 
     @Override
     public void delete(int brandId) {
-        var brand = brandRepository.findById(brandId).orElseThrow(
-                () -> new IllegalArgumentException("Id is invalid"));
+        var brand = brandRepository.findById(brandId).orElseThrow(() -> new IllegalArgumentException("Id is invalid"));
         brandRepository.delete(brand);
     }
 }

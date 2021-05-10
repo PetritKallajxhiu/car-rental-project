@@ -2,9 +2,7 @@ package com.example.carrentalproject.controller;
 
 import com.example.carrentalproject.model.Reservation;
 import com.example.carrentalproject.service.ReservationServices;
-
 import com.example.carrentalproject.service.SaveReservationRequest;
-
 import com.example.carrentalproject.service.impl.ReservationService;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/reservation")
+@RequestMapping("/api/reservations")
 public class ReservationController {
     private ReservationServices reservationService;
 
@@ -35,7 +33,7 @@ public class ReservationController {
         return reservationService.findAllById(reservationId);
     }
 
-    @PutMapping("/{reservationId}")
+    @PutMapping
     public int update(@PathVariable SaveReservationRequest request) {
         return reservationService.save(request);
     }

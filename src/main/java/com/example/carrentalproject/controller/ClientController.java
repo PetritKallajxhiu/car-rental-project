@@ -1,8 +1,6 @@
 package com.example.carrentalproject.controller;
 
-import com.example.carrentalproject.model.Car;
 import com.example.carrentalproject.model.Client;
-import com.example.carrentalproject.service.SaveCarRequest;
 import com.example.carrentalproject.service.SaveClientRequest;
 import com.example.carrentalproject.service.impl.ClientService;
 import org.springframework.web.bind.annotation.*;

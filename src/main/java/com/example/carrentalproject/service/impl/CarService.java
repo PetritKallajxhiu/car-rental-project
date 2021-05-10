@@ -4,14 +4,8 @@ import com.example.carrentalproject.model.Car;
 import com.example.carrentalproject.repository.CarRepository;
 import com.example.carrentalproject.service.CarServices;
 import com.example.carrentalproject.service.SaveCarRequest;
-import com.example.carrentalproject.util.FuelType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.util.*;
 
 @Service

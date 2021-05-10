@@ -3,11 +3,8 @@ package com.example.carrentalproject.controller;
 import com.example.carrentalproject.model.Brand;
 import com.example.carrentalproject.service.SaveBrandRequest;
 import com.example.carrentalproject.service.impl.BrandService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +33,7 @@ public class BrandController {
         return brandService.findAllById(brandId);
     }
 
-    @PutMapping("/{brandId}")
+    @PutMapping
     public int update(@PathVariable SaveBrandRequest request) {
         return brandService.save(request);
     }

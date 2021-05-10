@@ -1,11 +1,14 @@
 package com.example.carrentalproject.model;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Time;
+import java.util.Date;
+
 @Entity
 @Table(name = "reservations")
 @Data
@@ -16,7 +19,7 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     private String pickUpLocation;
     private Date pickUpDate;
     private Time pickUpTime;
