@@ -4,6 +4,7 @@ import com.example.carrentalproject.model.Brand;
 import com.example.carrentalproject.repository.BrandRepository;
 import com.example.carrentalproject.service.BrandServices;
 import com.example.carrentalproject.service.SaveBrandRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

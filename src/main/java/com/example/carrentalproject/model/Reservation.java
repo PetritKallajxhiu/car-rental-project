@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Time;
 import java.util.Date;
 
 @Entity
@@ -22,17 +21,22 @@ public class Reservation {
 
     private String pickUpLocation;
     private Date pickUpDate;
-    private Time pickUpTime;
+
+    private String pickUpTime;
+
     private int finalPrice;
     private String comment;
-
     private Date createdAt;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "carId", insertable = false, updatable = false)
     private Car car;
+
     private int carId;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "clientId", insertable = false, updatable = false)
     private Client client;
+
     private int clientId;
 }

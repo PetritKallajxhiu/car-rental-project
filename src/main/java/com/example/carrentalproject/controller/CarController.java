@@ -4,6 +4,7 @@ import com.example.carrentalproject.model.Car;
 import com.example.carrentalproject.service.SaveCarRequest;
 import com.example.carrentalproject.service.impl.CarService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
