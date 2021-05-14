@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ClientService implements ClientServices {
+public class ClientServiceImpl implements ClientServices {
     ClientRepository clientRepository;
 
-    private ClientService(ClientRepository clientRepository) {
+    private ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 

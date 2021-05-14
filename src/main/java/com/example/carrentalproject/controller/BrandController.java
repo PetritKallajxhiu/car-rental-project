@@ -2,7 +2,7 @@ package com.example.carrentalproject.controller;
 
 import com.example.carrentalproject.model.Brand;
 import com.example.carrentalproject.service.SaveBrandRequest;
-import com.example.carrentalproject.service.impl.BrandService;
+import com.example.carrentalproject.service.impl.BrandServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,34 +12,34 @@ import java.util.Optional;
 @RequestMapping("/api/brands")
 public class BrandController {
 
-    private BrandService brandService;
+    private BrandServiceImpl brandServiceImpl;
 
-    public BrandController(BrandService brandService) {
-        this.brandService = brandService;
+    public BrandController(BrandServiceImpl brandServiceImpl) {
+        this.brandServiceImpl = brandServiceImpl;
     }
 
     @PostMapping
     public int create(@RequestBody SaveBrandRequest request) {
-        return brandService.save(request);
+        return brandServiceImpl.save(request);
     }
 
     @GetMapping
     public List<Brand> getBrands() {
-        return brandService.findAll();
+        return brandServiceImpl.findAll();
     }
 
     @GetMapping("/{brandId}")
     public Optional<Brand> getBrandById(@PathVariable Integer brandId) {
-        return brandService.findAllById(brandId);
+        return brandServiceImpl.findAllById(brandId);
     }
 
     @PutMapping
     public int update(@PathVariable SaveBrandRequest request) {
-        return brandService.save(request);
+        return brandServiceImpl.save(request);
     }
 
     @DeleteMapping("/{brandId}")
     public void delete(@PathVariable int brandId) {
-        brandService.delete(brandId);
+        brandServiceImpl.delete(brandId);
     }
 }

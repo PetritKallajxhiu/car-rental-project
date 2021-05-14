@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class CarService implements CarServices {
+public class CarServiceImpl implements CarServices {
 
     private CarRepository carRepository;
 
-    public CarService(CarRepository carRepository) {
+    public CarServiceImpl(CarRepository carRepository) {
         this.carRepository = carRepository;
     }
 

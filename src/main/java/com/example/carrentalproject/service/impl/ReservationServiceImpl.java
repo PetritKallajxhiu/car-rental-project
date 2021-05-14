@@ -14,12 +14,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ReservationService implements ReservationServices {
+public class ReservationServiceImpl implements ReservationServices {
 
     private ReservationRepository reservationRepository;
     private ClientRepository clientRepository;
 
-    public ReservationService(ReservationRepository reservationRepository, ClientRepository clientRepository) {
+    public ReservationServiceImpl(ReservationRepository reservationRepository, ClientRepository clientRepository) {
         this.reservationRepository = reservationRepository;
         this.clientRepository = clientRepository;
     }

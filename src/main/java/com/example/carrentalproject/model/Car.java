@@ -28,7 +28,7 @@ public class Car {
     @Enumerated(EnumType.STRING)
     private FuelType fuelType;
 
-    private byte[] photo;
+    private String photo;
     private int price;
     private String location;
     private boolean featured;

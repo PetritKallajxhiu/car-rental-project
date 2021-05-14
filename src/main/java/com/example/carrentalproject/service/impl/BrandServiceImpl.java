@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class BrandService implements BrandServices {
+public class BrandServiceImpl implements BrandServices {
 
     private BrandRepository brandRepository;
 
-    public BrandService(BrandRepository brandRepository) {
+    public BrandServiceImpl(BrandRepository brandRepository) {
         this.brandRepository = brandRepository;
     }
 
