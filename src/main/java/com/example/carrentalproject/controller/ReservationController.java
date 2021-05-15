@@ -3,7 +3,6 @@ package com.example.carrentalproject.controller;
 import com.example.carrentalproject.model.Reservation;
 import com.example.carrentalproject.service.ReservationServices;
 import com.example.carrentalproject.service.SaveReservationRequest;
-import com.example.carrentalproject.service.impl.ReservationServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,8 +13,8 @@ import java.util.Optional;
 public class ReservationController {
     private ReservationServices reservationService;
 
-    public ReservationController(ReservationServiceImpl reservationServiceImpl) {
-        this.reservationService = reservationServiceImpl;
+    public ReservationController(ReservationServices reservationService) {
+        this.reservationService = reservationService;
     }
 
     @PostMapping

@@ -14,7 +14,7 @@ import java.nio.file.Paths;
 
 @Service
 public class FileServiceImpl implements FileService {
-    private final Path root = Paths.get("");
+    private final Path root = Paths.get("uploads");
 
     public void save(MultipartFile file) throws FileUploadException {
         try {
