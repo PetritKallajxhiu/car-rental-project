@@ -26,6 +26,9 @@ public class HomeController {
 
         var banners = this.bannerServices.findAll();
         modelMap.addAttribute("banners", banners);
+
         return "index_2";
     }
+
+
 }
