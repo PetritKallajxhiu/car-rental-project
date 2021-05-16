@@ -691,7 +691,57 @@
     ================================================== -->
 
 
-    <hr class="m-0" data-aos="fade-up" data-aos-delay="100">
+    <!-- <hr class="m-0" data-aos="fade-up" data-aos-delay="100">-->
+
+
+    <!-- blog_section - start
+    ================================================== -->
+    <section class="feature_section sec_ptb_150 clearfix">
+        <div class="container">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12">
+                    <div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
+                        <h2 class="title_text mb_15">
+                            <span>Useful Information </span>
+                        </h2>
+                        <p class="mb-0">
+                            Read useful information about cars and more
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature_vehicle_filter element-grid clearfix">
+                <div th:each="blog: ${blogTypes}" class="element-item sedan " data-category="sedan">
+                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="item_title mb-0">
+                            <a href="#!" th:text="${blog.title}"></a>
+                        </h3>
+                        <div class="item_image position-relative">
+                            <a class="image_wrap" href="#!">
+                                <img th:src="'/api/files/'+ ${blog.photo}" alt="image_not_found">
+                            </a>
+                            <span class="item_price bg_default_blue" th:text="${blog.title}"></span>
+                        </div>
+                        <ul class="info_list ul_li_center clearfix">
+                            <li th:text="${blog.author}"></li>
+                            <li th:text="${blog.createdAt}"></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="100">
+                <a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Read More<img
+                        src="assets/images/icons/icon_01.png" alt="icon_not_found"></a>
+            </div>
+
+        </div>
+    </section>
+    <!-- blog_section - end
+    ================================================== -->
 
 
     <!-- testimonial_section - start
