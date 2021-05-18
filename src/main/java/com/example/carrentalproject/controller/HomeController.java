@@ -18,14 +18,16 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(final ModelMap modelMap) {
-//        modelMap.addAttribute("helloMsg", "hello in thymeleaf from model map");
-//        modelMap.addAttribute("isSunny", true);
-//        modelMap.addAttribute("fruits", Arrays.asList("Apple", "Banana", "Orange", "Cherry"));
+
         var carTypes = this.carServices.findAll();
         modelMap.addAttribute("carTypes", carTypes);
 
         var banners = this.bannerServices.findAll();
         modelMap.addAttribute("banners", banners);
+
+
+        var featuredCars = this.carServices.featured();
+        modelMap.addAttribute("featuredCars", featuredCars);
 
         return "index_2";
     }

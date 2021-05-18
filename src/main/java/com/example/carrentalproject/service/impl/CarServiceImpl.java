@@ -73,4 +73,9 @@ public class CarServiceImpl implements CarServices {
         var car = carRepository.findById(carId).orElseThrow(() -> new IllegalArgumentException("Id is invalid"));
         carRepository.delete(car);
     }
+
+    @Override
+    public List<Car> featured() {
+        return carRepository.findAllFeatured();
+    }
 }

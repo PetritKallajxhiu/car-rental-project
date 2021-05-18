@@ -17,4 +17,6 @@ public interface CarServices {
     public int save(SaveCarRequest saveCarRequest);
 
     public void delete(int carId);
+
+    public List<Car> featured();
 }
