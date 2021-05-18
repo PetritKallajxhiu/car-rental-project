@@ -7,7 +7,10 @@ import java.util.Optional;
 
 public interface CarServices {
 
+
     public List<Car> findAll();
+
+    public List<Car> search(String name);
 
     public Optional<Car> findById(int carId);
 

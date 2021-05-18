@@ -23,6 +23,11 @@ public class CarServiceImpl implements CarServices {
     }
 
     @Override
+    public List<Car> search(String name) {
+        return carRepository.search(name);
+    }
+
+    @Override
     public Optional<Car> findById(int carId) {
         return carRepository.findById(carId);
     }
