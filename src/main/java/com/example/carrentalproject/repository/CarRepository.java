@@ -6,8 +6,15 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
+
 public interface CarRepository extends JpaRepository<Car, Integer> {
 
     @Query(value = "SELECT * FROM cars WHERE featured = true", nativeQuery = true)
     List<Car> findAllFeatured();
+
+
+public interface CarRepository extends JpaRepository<Car, Integer> {
+    @Query(value = "SELECT c FROM Car c WHERE c.name = :name")
+    List<Car> search(@Param("name") String name);
+
 }

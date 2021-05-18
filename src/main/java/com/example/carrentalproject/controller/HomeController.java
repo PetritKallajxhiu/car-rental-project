@@ -25,8 +25,12 @@ public class HomeController {
         var banners = this.bannerServices.findAll();
         modelMap.addAttribute("banners", banners);
 
+
         var featuredCars = this.carServices.featured();
         modelMap.addAttribute("featuredCars", featuredCars);
+
         return "index_2";
     }
+
+
 }
