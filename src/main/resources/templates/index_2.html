@@ -40,12 +40,6 @@
 
 
 <body>
-
-<!--<p th:text="${helloMsg}"></p>-->
-<!--<p th:if="isSunny">Today is sunny</p>-->
-<!--<p th:if="!isSunny ">Today is rainy</p>-->
-<!--<p th:each="fruit : ${fruits}" th:text="${fruit}"></p>-->
-
 <!-- backtotop - start -->
 <div id="thetop"></div>
 <div class="backtotop">
@@ -313,73 +307,21 @@
     ================================================== -->
     <section class="slider_section text-white text-center position-relative clearfix">
         <div class="main_slider clearfix">
-            <mdb-carousel th:each="banner: ${banners}" class="carousel slide carousel-fade" [animation]="'fade'">
-                <mdb-carousel-item>
-                    <div class="view w-100">
-                        <img class="d-block w-100" th:src="'/api/files/'+${banner.photo}" alt="icon_not_found">
-                        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+            <div th:each="banner: ${banners}" class="item has_overlay d-flex align-items-center"
+                 th:attr="data-bg-image='/api/files/'+${banner.photo}">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                            <div class="slider_content text-center">
+                                <h3 class="text-white text-uppercase"
+                                    data-animation="fadeInUp" data-delay=".3s" th:text="${banner.name}"></h3>
+                            </div>
+                        </div>
                     </div>
-                    <div class="carousel-caption">
-                        <h3 class="h3-responsive" th:text="${banner.name}"></h3>
-                    </div>
-                </mdb-carousel-item>
-            </mdb-carousel>
+                </div>
+            </div>
 
-<!--            <div class="item has_overlay d-flex align-items-center" data-bg-image="assets/images/backgrounds/bg_02.jpg">-->
-<!--                <div class="overlay"></div>-->
-<!--                <div class="container">-->
-
-<!--                    <div class="row justify-content-center">-->
-<!--                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
-<!--                            <div class="slider_content text-center">-->
-<!--                                <h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">-->
-<!--                                    Lamborghini Aventador LP700-4</h3>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="item has_overlay d-flex align-items-center" data-bg-image="assets/images/backgrounds/bg_02.jpg">-->
-<!--                <div class="overlay"></div>-->
-<!--                <div class="container">-->
-
-<!--                    <div th:each="banner: ${banners}" class="row justify-content-center">-->
-<!--                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
-<!--                            <div class="slider_content text-center">-->
-<!--                                <h3 class="text-white text-uppercase" data-animation="fadeInUp"-->
-<!--                                    data-delay=".3s" th:text="${banner.name}"></h3>-->
-<!--                                <p data-animation="fadeInLeft" data-delay=".5s"></p>-->
-<!--                                <div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">-->
-<!--                                    <img th:src="'/api/files/'+${banner.photo}" alt="icon_not_found"></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--            <div class="item has_overlay d-flex align-items-center" data-bg-image="assets/images/backgrounds/bg_02.jpg">-->
-<!--                <div class="overlay"></div>-->
-<!--                <div class="container">-->
-
-<!--                    <div class="row justify-content-center">-->
-<!--                        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">-->
-<!--                            <div class="slider_content text-center">-->
-<!--                                <h3 class="text-white text-uppercase" data-animation="fadeInUp" data-delay=".3s">-->
-<!--                                    Lamborghini Aventador LP700-4</h3>-->
-<!--                                <p data-animation="fadeInUp" data-delay=".5s">-->
-<!--                                    6.6L V8 32V DDI OHV Turbo Diesel, 5-Speed Automatic, Fuel Type: Diesel, Color: Black-->
-<!--                                </p>-->
-<!--                                <div class="abtn_wrap clearfix" data-animation="fadeInUp" data-delay=".7s">-->
-<!--                                    <a class="custom_btn bg_default_red btn_width text-uppercase" href="#!">Book Now-->
-<!--                                        <img src="assets/images/icons/icon_01.png" alt="icon_not_found"></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
         </div>
 
         <div class="carousel_nav clearfix">
@@ -458,135 +400,25 @@
             </div>
 
             <div class="feature_vehicle_filter element-grid clearfix">
-                <div th:each="car: ${carTypes}" class="element-item sedan " data-category="sedan">
+                <div th:each="featured: ${featuredCars}" class="element-item sedan " data-category="sedan">
                     <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="item_title mb-0">
-                            <a href="#!" th:text="${car.name}"></a>
+                            <a href="#!" th:text="${featured.name}"></a>
                         </h3>
                         <div class="item_image position-relative">
-                            <a class="image_wrap" href="#!">
-                                <img th:src="'/api/files/'+ ${car.photo}" alt="image_not_found">
+                            <a class="image_wrap" th:href="'/details/' + ${featured.id}">
+                                <img th:src="'/api/files/'+ ${featured.photo}" alt="image_not_found">
                             </a>
-                            <span class="item_price bg_default_blue" th:text="${'$' + car.price +'/Day'}"></span>
+                            <span class="item_price bg_default_blue" th:text="${'$' + featured.price +'/Day'}"></span>
                         </div>
                         <ul class="info_list ul_li_center clearfix">
-                            <li th:text="${car.brand.name}"></li>
-                            <li th:text="${car.fuelType}"></li>
-                            <li th:text="${car.doors +' doors'}"></li>
-                            <li th:text="${car.passengers + ' passengers'}"></li>
+                            <li th:text="${featured.brand.name}"></li>
+                            <li th:text="${featured.fuelType}"></li>
+                            <li th:text="${featured.doors +' doors'}"></li>
+                            <li th:text="${featured.passengers + ' pax'}"></li>
                         </ul>
                     </div>
                 </div>
-
-                <!--                <div th:each="car: ${carTypes}" class="element-item sports " data-category="sports">-->
-                <!--                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">-->
-                <!--                        <h3 class="item_title mb-0">-->
-                <!--                            <a href="#!">-->
-                <!--                                2019 Chevrolet Corvette Stingray Red-->
-                <!--                            </a>-->
-                <!--                        </h3>-->
-                <!--                        <div class="item_image position-relative">-->
-                <!--                            <a class="image_wrap" href="#!">-->
-                <!--                                <img th:src="'/api/files/'+ ${car.photo}" alt="image_not_found">-->
-                <!--                            </a>-->
-                <!--                            <span class="item_price bg_default_blue">$230/Day</span>-->
-                <!--                        </div>-->
-                <!--                        <ul class="info_list ul_li_center clearfix">-->
-                <!--                            <li>Sports</li>-->
-                <!--                            <li>Auto</li>-->
-                <!--                            <li>2 Passengers</li>-->
-                <!--                            <li>Hybrid</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
-                <!--                <div class="element-item luxury " data-category="luxury">-->
-                <!--                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="500">-->
-                <!--                        <h3 class="item_title mb-0">-->
-                <!--                            <a href="#!">-->
-                <!--                                2015 Chevrolet Corvette Stingray Z51-->
-                <!--                            </a>-->
-                <!--                        </h3>-->
-                <!--                        <div class="item_image position-relative">-->
-                <!--                            <a class="image_wrap" href="#!">-->
-                <!--                                <img src="assets/images/feature/img_03.jpg" alt="image_not_found">-->
-                <!--                            </a>-->
-                <!--                            <span class="item_price bg_default_blue">$120/Day</span>-->
-                <!--                        </div>-->
-                <!--                        <ul class="info_list ul_li_center clearfix">-->
-                <!--                            <li>Sports</li>-->
-                <!--                            <li>Auto</li>-->
-                <!--                            <li>2 Passengers</li>-->
-                <!--                            <li>Gasoline</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
-                <!--                <div class="element-item sedan " data-category="sedan">-->
-                <!--                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="100">-->
-                <!--                        <h3 class="item_title mb-0">-->
-                <!--                            <a href="#!">-->
-                <!--                                2020 Audi New Generation P00234-->
-                <!--                            </a>-->
-                <!--                        </h3>-->
-                <!--                        <div class="item_image position-relative">-->
-                <!--                            <a class="image_wrap" href="#!">-->
-                <!--                                <img src="assets/images/feature/img_04.jpg" alt="image_not_found">-->
-                <!--                            </a>-->
-                <!--                            <span class="item_price bg_default_blue">$230/Day</span>-->
-                <!--                        </div>-->
-                <!--                        <ul class="info_list ul_li_center clearfix">-->
-                <!--                            <li>Sports</li>-->
-                <!--                            <li>Auto</li>-->
-                <!--                            <li>2 Passengers</li>-->
-                <!--                            <li>Electro</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
-                <!--                <div class="element-item sports " data-category="sports">-->
-                <!--                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="300">-->
-                <!--                        <h3 class="item_title mb-0">-->
-                <!--                            <a href="#!">-->
-                <!--                                2015 Chevrolet Corvette Stingray Z51-->
-                <!--                            </a>-->
-                <!--                        </h3>-->
-                <!--                        <div class="item_image position-relative">-->
-                <!--                            <a class="image_wrap" href="#!">-->
-                <!--                                <img src="assets/images/feature/img_05.jpg" alt="image_not_found">-->
-                <!--                            </a>-->
-                <!--                            <span class="item_price bg_default_blue">$160/Day</span>-->
-                <!--                        </div>-->
-                <!--                        <ul class="info_list ul_li_center clearfix">-->
-                <!--                            <li>Sports</li>-->
-                <!--                            <li>Auto</li>-->
-                <!--                            <li>2 Passengers</li>-->
-                <!--                            <li>Gasoline</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
-
-                <!--                <div class="element-item luxury " data-category="luxury">-->
-                <!--                    <div class="feature_vehicle_item" data-aos="fade-up" data-aos-delay="500">-->
-                <!--                        <h3 class="item_title mb-0">-->
-                <!--                            <a href="#!">-->
-                <!--                                2015 Chevrolet Corvette Stingray Z51-->
-                <!--                            </a>-->
-                <!--                        </h3>-->
-                <!--                        <div class="item_image position-relative">-->
-                <!--                            <a class="image_wrap" href="#!">-->
-                <!--                                <img src="assets/images/feature/img_06.jpg" alt="image_not_found">-->
-                <!--                            </a>-->
-                <!--                            <span class="item_price bg_default_blue">$230/Day</span>-->
-                <!--                        </div>-->
-                <!--                        <ul class="info_list ul_li_center clearfix">-->
-                <!--                            <li>Sports</li>-->
-                <!--                            <li>Auto</li>-->
-                <!--                            <li>2 Passengers</li>-->
-                <!--                            <li>Hybrid</li>-->
-                <!--                        </ul>-->
-                <!--                    </div>-->
-                <!--                </div>-->
             </div>
 
             <div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="100">

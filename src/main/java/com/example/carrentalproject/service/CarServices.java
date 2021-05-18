@@ -7,11 +7,13 @@ import java.util.Optional;
 
 public interface CarServices {
 
-    public List<Car> findAll();
+    List<Car> findAll();
 
-    public Optional<Car> findById(int carId);
+    Optional<Car> findById(int carId);
 
-    public int save(SaveCarRequest saveCarRequest);
+    int save(SaveCarRequest saveCarRequest);
 
-    public void delete(int carId);
+    void delete(int carId);
+
+    List<Car> featured();
 }
