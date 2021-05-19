@@ -1,4 +1,4 @@
-package com.example.carrentalproject.controller;
+package com.example.carrentalproject.controller.thymeleafController;
 
 import com.example.carrentalproject.service.BannerServices;
 import com.example.carrentalproject.service.CarServices;
@@ -22,12 +22,18 @@ public class CarDetailController {
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable int id, final ModelMap modelMap) {
-        var comments = commentServices.findAll();
+        var comments = commentServices.findByCarId(id);
         modelMap.addAttribute("comments", comments);
 
         var details = carServices.findById(id).orElseThrow(() -> new RuntimeException("Invalid id"));
         modelMap.addAttribute("details", details);
         return "car_details";
+    }
 
+    @GetMapping("/comments")
+    public String allComents(final ModelMap modelMap) {
+        var comments = commentServices.findAll();
+        modelMap.addAttribute("comments", comments);
+        return "review";
     }
 }

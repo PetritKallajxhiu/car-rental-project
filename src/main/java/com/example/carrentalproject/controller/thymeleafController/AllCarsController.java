@@ -1,4 +1,4 @@
-package com.example.carrentalproject.controller;
+package com.example.carrentalproject.controller.thymeleafController;
 
 import com.example.carrentalproject.service.CarServices;
 import org.springframework.stereotype.Controller;
@@ -19,6 +19,9 @@ public class AllCarsController {
 
         var cars = q != null && q != "" ? this.carServices.search(q) : this.carServices.findAll();
         modelMap.addAttribute("cars", cars);
+
+        var featuredCars = this.carServices.featured();
+        modelMap.addAttribute("featuredCars", featuredCars);
 
         return "gallery";
     }

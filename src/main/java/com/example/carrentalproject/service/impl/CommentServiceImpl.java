@@ -1,6 +1,5 @@
 package com.example.carrentalproject.service.impl;
 
-import com.example.carrentalproject.model.Client;
 import com.example.carrentalproject.model.Comment;
 import com.example.carrentalproject.repository.CommentsRepository;
 import com.example.carrentalproject.service.CommentServices;
@@ -58,5 +57,10 @@ public class CommentServiceImpl implements CommentServices {
     public void delete(int commentId) {
         var comment = commentsRepository.findById(commentId).orElseThrow(() -> new IllegalArgumentException("Id is invalid"));
         commentsRepository.delete(comment);
+    }
+
+    @Override
+    public List<Comment> findByCarId(int id) {
+        return commentsRepository.findByCarId(id);
     }
 }

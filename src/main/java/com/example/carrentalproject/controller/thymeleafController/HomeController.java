@@ -1,7 +1,8 @@
-package com.example.carrentalproject.controller;
+package com.example.carrentalproject.controller.thymeleafController;
 
 import com.example.carrentalproject.service.BannerServices;
 import com.example.carrentalproject.service.CarServices;
+import com.example.carrentalproject.service.CommentServices;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
     private CarServices carServices;
     private BannerServices bannerServices;
+    private CommentServices commentServices;
 
-    public HomeController(CarServices carServices, BannerServices bannerServices) {
+    public HomeController(CarServices carServices, BannerServices bannerServices, CommentServices commentServices) {
         this.carServices = carServices;
         this.bannerServices = bannerServices;
+        this.commentServices = commentServices;
     }
 
     @GetMapping("/")
@@ -25,6 +28,8 @@ public class HomeController {
         var banners = this.bannerServices.findAll();
         modelMap.addAttribute("banners", banners);
 
+        var comments = commentServices.findAll();
+        modelMap.addAttribute("comments", comments);
 
         var featuredCars = this.carServices.featured();
         modelMap.addAttribute("featuredCars", featuredCars);
