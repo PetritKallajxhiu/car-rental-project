@@ -25,6 +25,9 @@ public class BlogServicesImpl implements BlogServices {
     }
 
     @Override
+    public List<Blog> search(String title){return blogRepository.search(title);}
+
+    @Override
     public Optional<Blog> findAllById(int blogId) {
         return blogRepository.findById(blogId);
     }

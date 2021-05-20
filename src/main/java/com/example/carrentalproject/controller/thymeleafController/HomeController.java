@@ -36,6 +36,10 @@ public class HomeController {
 
         return "index_2";
     }
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
 
 
 }

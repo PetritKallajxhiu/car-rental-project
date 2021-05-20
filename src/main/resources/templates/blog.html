@@ -130,47 +130,15 @@
                 <div class="col-lg-6 col-md-12">
                     <nav class="main_menu clearfix">
                         <ul class="ul_li_center clearfix">
-                            <li class="active has_child"><a href="/">Home</a></li>
+                            <li><a href="/">Home</a></li>
                             <li><a href="/allCars">Our Cars</a></li>
                             <li><a href="/comments">Reviews</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li class="has_child">
-                                <a href="#!">Pages</a>
-                                <ul class="submenu">
-                                    <li><a href="service.html">Our Service</a></li>
-                                    <li><a href="gallery.html">Car Gallery</a></li>
-                                    <li><a href="account.html">My Account</a></li>
-                                    <li><a href="reservation.html">Reservation</a></li>
-                                    <li class="has_child">
-                                        <a href="#!">Blogs</a>
-                                        <ul class="submenu">
-                                            <li><a href="/allBLogs">Blog</a></li>
-                                            <li><a href="blog_details.html">Blog Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has_child">
-                                        <a href="#!">Our Cars</a>
-                                        <ul class="submenu">
-                                            <li><a href="car.html">Cars</a></li>
-                                            <li><a href="car_details.html">Car Details</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="cart.html">Shopping Cart</a></li>
-                                    <li><a href="faq.html">F.A.Q.</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                </ul>
-                            </li>
-                            <li class="has_child">
-                                <a href="#!">Contact Us</a>
-                                <ul class="submenu">
-                                    <li><a href="contact.html">Contact Default</a></li>
-                                    <li><a href="contact_wordwide.html">Contact Wordwide</a></li>
-                                </ul>
+                            <li class="active"><a href="/allBlogs">Blogs</a></li>
+                            <li><a href="/contact">Contact Us</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </div>
     </div>
@@ -178,9 +146,9 @@
     <div id="collapse_search_body" class="collapse_search_body collapse">
         <div class="search_body">
             <div class="container">
-                <form action="/allCars">
+                <form action="/allBlogs">
                     <div class="form_item">
-                        <input type="search" name="search" placeholder="Type here...">
+                        <input type="search" name="b" placeholder="Type here...">
                         <button type="submit"><i class="fal fa-search"></i></button>
                     </div>
                 </form>
@@ -224,7 +192,6 @@
                             <ul class="post_meta ul_li clearfix">
                                 <li th:text="${blog.createdAt}"></li>
                                 <li>by <a th:text="${blog.author}"></a></li>
-                                <li><a href="#!">No Comments</a></li>
                             </ul>
                             <h3 class="item_title">
                                 <a href="blog_details.html" target="_blank" th:text="${blog.title}"></a>
@@ -235,185 +202,12 @@
                                                                            alt="icon_not_found"></a>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="col-lg-4 col-md-6">
-                    <aside class="sidebar_section clearfix" data-bg-color="#F2F2F2">
-                        <div class="sb_widget sb_subscrib_form" data-aos="fade-up" data-aos-delay="100">
-                            <h3 class="sb_widget_title">Subscribe:</h3>
-                            <form action="#">
-                                <div class="form_item">
-                                    <input type="email" name="email" placeholder="E-mail">
-                                </div>
-                                <button type="submit" class="custom_btn bg_default_red text-uppercase">Subscribe <img
-                                        src="assets/images/icons/icon_01.png" alt="icon_not_found"></button>
-                            </form>
-                        </div>
-
-                        <div class="sb_widget sb_latest_newses" data-aos="fade-up" data-aos-delay="300">
-                            <h3 class="sb_widget_title">Latest News:</h3>
-
-                            <div class="blog_small_grid">
-                                <a class="item_image" href="#!">
-                                    <img src="assets/images/blog/img_05.jpg" alt="image_not_found">
-                                </a>
-                                <div class="item_content">
-                                    <h3 class="item_title">
-                                        <a href="#!">
-                                            Porta nec nibh ut sodales. Phasellus nunc nunc, auctor…
-                                        </a>
-                                    </h3>
-                                    <span class="post_date">Aug. 10, 2020 / by Merkulove/ No Comments</span>
-                                </div>
-                            </div>
-
-                            <div class="blog_small_grid">
-                                <a class="item_image" href="#!">
-                                    <img src="assets/images/blog/img_06.jpg" alt="image_not_found">
-                                </a>
-                                <div class="item_content">
-                                    <h3 class="item_title">
-                                        <a href="#!">
-                                            Phasellus mollis tus ligula to a quam dolor...
-                                        </a>
-                                    </h3>
-                                    <span class="post_date">Aug. 10, 2020 / by Merkulove/ No Comments</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="sb_widget sb_category_list" data-aos="fade-up" data-aos-delay="500">
-                            <h3 class="sb_widget_title">Categories:</h3>
-                            <ul class="ul_li_block clearfix">
-                                <li><a href="#!"><i class="fas fa-caret-right"></i> Vehicle guide</a></li>
-                                <li><a href="#!"><i class="fas fa-caret-right"></i> Best offers</a></li>
-                                <li><a href="#!"><i class="fas fa-caret-right"></i> Travel Guides</a></li>
-                                <li><a href="#!"><i class="fas fa-caret-right"></i> On The Road</a></li>
-                            </ul>
-                        </div>
-                    </aside>
                 </div>
             </div>
         </div>
     </section>
     <!-- blog_section - end
     ================================================== -->
-
-
-    <!-- search_section - start
-    ================================================== -->
-    <section class="search_section sec_ptb_100 clearfix" data-bg-color="#161829">
-        <div class="container">
-            <div class="section_title text-center mb_60" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="title_text text-white mb-0"><span>Find the right car for every occasion</span></h2>
-            </div>
-
-            <div class="advance_search_form2 p-0 mt-0 mb_60 shadow-none">
-                <div class="row align-items-end">
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="100">
-                        <div class="form_item">
-                            <h4 class="input_title text-white">Pick Up Location</h4>
-                            <div class="position-relative">
-                                <input id="location_two" type="text" name="location"
-                                       placeholder="City, State or Airport Code">
-                                <label for="location_two" class="input_icon"><i
-                                        class="fas fa-map-marker-alt"></i></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="300">
-                        <div class="form_item">
-                            <h4 class="input_title text-white">Pick A Date</h4>
-                            <input type="date" name="date">
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="500">
-                        <form action="#">
-                            <div class="price-range-area clearfix">
-                                <h4 class="input_title text-white">Price</h4>
-                                <div id="slider-range" class="slider-range clearfix"></div>
-                                <input class="price-text" type="text" id="amount" readonly>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12" data-aos="fade-up" data-aos-delay="700">
-                        <button type="submit" class="custom_btn bg_default_red text-uppercase">Find A Car <img
-                                src="assets/images/icons/icon_01.png" alt="icon_not_found"></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="offers_car_carousel slideshow4_slider" data-aos="fade-up" data-aos-delay="900">
-            <div class="item">
-                <div class="gallery_fullimage_2">
-                    <img src="assets/images/gallery/img_03.jpg" alt="image_not_found">
-                    <div class="item_content text-white">
-                        <span class="item_price bg_default_blue">$670/Day</span>
-                        <h3 class="item_title text-white">Phasellus porta pulvinar metus</h3>
-                        <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img
-                                src="assets/images/icons/icon_02.png" alt="icon_not_found"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="gallery_fullimage_2">
-                    <img src="assets/images/gallery/img_04.jpg" alt="image_not_found">
-                    <div class="item_content text-white">
-                        <span class="item_price bg_default_blue">$670/Day</span>
-                        <h3 class="item_title text-white">Phasellus porta pulvinar metus</h3>
-                        <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img
-                                src="assets/images/icons/icon_02.png" alt="icon_not_found"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="gallery_fullimage_2">
-                    <img src="assets/images/gallery/img_05.jpg" alt="image_not_found">
-                    <div class="item_content text-white">
-                        <span class="item_price bg_default_blue">$670/Day</span>
-                        <h3 class="item_title text-white">Phasellus porta pulvinar metus</h3>
-                        <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img
-                                src="assets/images/icons/icon_02.png" alt="icon_not_found"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="gallery_fullimage_2">
-                    <img src="assets/images/gallery/img_06.jpg" alt="image_not_found">
-                    <div class="item_content text-white">
-                        <span class="item_price bg_default_blue">$670/Day</span>
-                        <h3 class="item_title text-white">Phasellus porta pulvinar metus</h3>
-                        <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img
-                                src="assets/images/icons/icon_02.png" alt="icon_not_found"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item">
-                <div class="gallery_fullimage_2">
-                    <img src="assets/images/gallery/img_03.jpg" alt="image_not_found">
-                    <div class="item_content text-white">
-                        <span class="item_price bg_default_blue">$670/Day</span>
-                        <h3 class="item_title text-white">Phasellus porta pulvinar metus</h3>
-                        <a class="text_btn text-uppercase" href="#!"><span>Kook A Car</span> <img
-                                src="assets/images/icons/icon_02.png" alt="icon_not_found"></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- search_section - end
-    ================================================== -->
-
-
 </main>
 <!-- main body - end
 ================================================== -->
@@ -438,18 +232,6 @@
                             Phasellus ut lacus lacus. Phasellus sagittis ex id tortor tincidunt luctus. Donec
                             consectetur consequat bibendum
                         </p>
-                        <div class="footer_useful_links mb_30">
-                            <ul class="ul_li_block clearfix">
-                                <li><a href="#!"><i class="fal fa-angle-right"></i> Rental Information</a></li>
-                                <li><a href="#!"><i class="fal fa-angle-right"></i> F.A.Q.</a></li>
-                            </ul>
-                        </div>
-                        <div class="form_item mb-0">
-                            <form action="#">
-                                <input id="footer_search" type="search" name="search" placeholder="Search">
-                                <label for="footer_search" class="input_icon"><i class="fal fa-search"></i></label>
-                            </form>
-                        </div>
                     </div>
                 </div>
 
@@ -459,14 +241,11 @@
                         <ul class="ul_li_block clearfix">
                             <li>
                                 <strong><i class="fas fa-map-marker-alt"></i> Main Office Address:</strong>
-                                <p class="mb-0">
-                                    Unit 9, Manor Industrial Estate, Lower Wash Lane, Warrington, WA4
-                                </p>
+                                <p class="mb-0">Rruga “Papa Gjon Pali II”, No 3, Tirana, Albania</p>
                             </li>
                             <li><i class="fas fa-clock"></i> 8:00am-9:30pm</li>
-                            <li><i class="far fa-angle-right"></i> Other Office Locations</li>
                             <li><i class="fas fa-envelope"></i> <strong>rotorseml@eml.fr</strong></li>
-                            <li><i class="fas fa-phone"></i> <strong>+880 1680 6361 89</strong></li>
+                            <li><i class="fas fa-phone"></i> <strong>069 69 13 566</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -475,14 +254,9 @@
                     <div class="footer_useful_links" data-aos="fade-up" data-aos-delay="300">
                         <h3 class="footer_widget_title">Information:</h3>
                         <ul class="ul_li_block clearfix">
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> Find a Car for Rent in the Nearest
-                                Location</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> Cars Catalog</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> F.A.Q.</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> About Us</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> Contact Us</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> Help Center</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> Privacy Police</a></li>
+                            <li><a href="/allCars"><i class="fal fa-angle-right"></i> Cars Catalog</a></li>
+                            <li><a href="/allBlogs"><i class="fal fa-angle-right"></i>Blog</a></li>
+                            <li><a href="/contact"><i class="fal fa-angle-right"></i> Contact Us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -494,8 +268,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <p class="copyright_text mb-0">Copyright © 2020. Rotors by <a class="author_links text-white"
-                                                                                  href="#!">Merkulove</a></p>
+                    <p class="copyright_text mb-0">Copyright © 2021. Rotors</p>
                 </div>
 
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">

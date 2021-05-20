@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BlogPageController {
@@ -17,8 +17,8 @@ public class BlogPageController {
     }
 
     @RequestMapping("/allBlogs")
-    public String blogs(final ModelMap modelMap) {
-        var blogs = this.blogServices.findAll();
+    public String blogs(final ModelMap modelMap, @RequestParam(value = "b", required = false) String b) {
+        var blogs = b != null && b != "" ? this.blogServices.search(b) : this.blogServices.findAll();
         modelMap.addAttribute("blogs", blogs);
         return "blog";
     }
