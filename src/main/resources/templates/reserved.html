@@ -2,12 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>Reviews - Rotors - Car Rental HTML5 Template</title>
+    <title>Reservation details</title>
     <link rel="shortcut icon" href="assets/images/logo/favourite_icon.png">
 
     <!-- fraimwork - css include -->
@@ -38,10 +37,7 @@
 
 </head>
 
-
 <body>
-
-
 <!-- backtotop - start -->
 <div id="thetop"></div>
 <div class="backtotop">
@@ -122,30 +118,17 @@
                         <ul class="ul_li_center clearfix">
                             <li><a href="/">Home</a></li>
                             <li><a href="/allCars">Cars Catalog</a></li>
-                            <li class="active"><a href="/comments">Reviews</a></li>
+                            <li><a href="/comments">Reviews</a></li>
                             <li><a href="/allBlogs">Blogs</a></li>
                             <li><a href="/contact">Contact Us</a>
                             </li>
                         </ul>
                     </nav>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <div id="collapse_search_body" class="collapse_search_body collapse">
-        <div class="search_body">
-            <div class="container">
-                <form action="/allCars">
-                    <div class="form_item">
-                        <input type="search" name="search" placeholder="Type here...">
-                        <button type="submit"><i class="fal fa-search"></i></button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 </header>
 <!-- header_section - end
 ================================================== -->
@@ -155,60 +138,130 @@
 ================================================== -->
 <main>
 
-    <!-- breadcrumb_section - start
+    <!-- cart_section - start
     ================================================== -->
-    <section class="breadcrumb_section text-center clearfix">
-        <div class="page_title_area has_overlay d-flex align-items-center clearfix"
-             data-bg-image="assets/images/breadcrumb/bg_04.jpg">
-            <div class="overlay"></div>
-            <div class="container" data-aos="fade-up" data-aos-delay="100">
-                <h1 class="page_title text-white mb-0">Reviews</h1>
-            </div>
-        </div>
-    </section>
-    <!-- breadcrumb_section - end
-    ================================================== -->
-
-    <!-- testimonial_section - start
-    ================================================== -->
-    <section class="testimonial_section sec_ptb_150 clearfix">
+    <section class="cart_section sec_ptb_100 clearfix">
         <div class="container">
+            <div class="row justify-content-lg-between justify-content-md-center justify-content-sm-center">
 
-            <div class="section_title mb_60 text-center" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="title_text mb-0">
-                    <span>What Clients Say about Us</span>
-                </h2>
-            </div>
-
-            <div class="testimonial_carousel_wrap position-relative" data-aos="fade-up" data-aos-delay="300">
-                <div class="testimonial_carousel" data-slick='{"dots": false}'>
-                    <div class="item" th:each="comment: ${comments}">
-                        <div class="testimonial_item2 text-center">
-                            <p class="mb_30" th:text="${comment.content}"></p>
-                            <div class="admin_info">
-                                <div class="admin_image">
-                                    <img th:src="'/api/files/'+${comment.photo}" alt="image_not_found">
-                                </div>
-                                <h4 class="admin_name" th:text="${comment.name}"></h4>
-                                <ul class="rating_star ul_li_center clearfix">
-                                    <li th:each="i : ${#numbers.sequence( 1, comment.rate)}" class="active"><i
-                                            class="fas fa-star"></i></li>
-                                </ul>
-                            </div>
+                <div class="col-lg-4 col-md-9 col-sm-10 col-xs-12">
+                    <div class="feature_vehicle_item mt-0 ml-0" data-aos="fade-up" data-aos-delay="100">
+                        <h3 class="item_title mb-0">
+                            <a th:href="'/details/'+${selectedCar.id}" th:text="${selectedCar.name}">
+                            </a>
+                        </h3>
+                        <div class="item_image position-relative">
+                            <a class="image_wrap" href="#!">
+                                <img th:src="'/api/files/'+${selectedCar.photo}" alt="image_not_found">
+                            </a>
+                            <span class="item_price bg_default_blue" th:text="${selectedCar.price}"></span>
                         </div>
                     </div>
                 </div>
 
-                <div class="carousel_nav position_ycenter">
-                    <button type="button" class="ts_left_arrow"><i class="fal fa-angle-left"></i></button>
-                    <button type="button" class="ts_right_arrow"><i class="fal fa-angle-right"></i></button>
+                <div class="col-lg-8 col-md-9 col-sm-10 col-xs-12">
+                    <div class="cart_info_content">
+                        <div class="row mt__30">
+                            <div class="col-lg-5 col-md-4 col-sm-12 col-xs-12">
+                                <div class="cart_address_item" data-aos="fade-up" data-aos-delay="100">
+                                    <h4>Pick Up Location:</h4>
+                                    <p class="mb-0" th:text="${reservation.pickUpLocation}"><i
+                                            class="fas fa-map-marker-alt"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <div class="cart_address_item" data-aos="fade-up" data-aos-delay="200">
+                                    <h4>Pick Up Date:</h4>
+                                    <p class="mb-0" th:text="${reservation.pickUpDate}"><i
+                                            class="fas fa-calendar-alt"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <div class="cart_address_item" data-aos="fade-up" data-aos-delay="300">
+                                    <h4>Time:</h4>
+                                    <p class="mb-0" th:text="${reservation.pickUpTime}"><i class="fas fa-clock"></i></p>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                <div class="cart_address_item" data-aos="fade-up" data-aos-delay="600">
+                                    <h4>Final Price:</h4>
+                                    <p class="mb-0" th:text="${reservation.finalPrice}"><i class="fas fa-clock"></i></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr data-aos="fade-up" data-aos-delay="100">
+
+                        <div class="cart_offers_include">
+                            <h4 class="title_text mb-0" data-aos="fade-up" data-aos-delay="100">Your Offer
+                                Includes:</h4>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <ul class="cart_info_list ul_li_block clearfix" data-aos="fade-up"
+                                        data-aos-delay="300">
+                                        <li><i class="far fa-check-circle"></i> Registration Free/ Road Tax</li>
+                                        <li><i class="far fa-check-circle"></i> Fully Comprehensive Insurance</li>
+                                    </ul>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <ul class="cart_info_list ul_li_block clearfix" data-aos="fade-up"
+                                        data-aos-delay="500">
+                                        <li><i class="far fa-check-circle"></i> Excess/Security deposit</li>
+                                        <li><i class="far fa-check-circle"></i> Breakdown Assistance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr data-aos="fade-up" data-aos-delay="100">
+
+                        <div class="rental_calltoaction">
+                            <h4 class="title_text" data-aos="fade-up" data-aos-delay="100">Client details:</h4>
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="cart_address_item" data-aos="fade-up" data-aos-delay="300">
+                                        <h4>Full Name:</h4>
+                                        <p class="mb-0" th:text="${reservation.clientName}"><i
+                                                class="fas fa-map-marker-alt"></i>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="cart_address_item" data-aos="fade-up" data-aos-delay="300">
+                                        <h4>Email:</h4>
+                                        <p class="mb-0" th:text="${reservation.clientEmail}"><i
+                                                class="fas fa-map-marker-alt"></i></p>
+                                    </div>
+                                </div>
+                                <div style="padding: 0px 0px 0px 26px!important;"
+                                     class="col-lg-3 col-md-4 col-sm-12 col-xs-12">
+                                    <div class="cart_address_item" data-aos="fade-up" data-aos-delay="300">
+                                        <h4>Phone Number:</h4>
+                                        <p class="mb-0" th:text="${reservation.phoneNumber}"><i
+                                                class="fas fa-map-marker-alt"></i></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr data-aos="fade-up" data-aos-delay="100">
+
+                        <div class="abtn_wrap text-center clearfix" data-aos="fade-up" data-aos-delay="100">
+                            <a class="custom_btn bg_default_red btn_width text-uppercase" href="/">Return to Rotors<img
+                                    src="assets/images/icons/icon_01.png" alt="icon_not_found"></a>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
     </section>
-    <!-- testimonial_section - end
+    <!-- cart_section - end
     ================================================== -->
+
 
 </main>
 <!-- main body - end

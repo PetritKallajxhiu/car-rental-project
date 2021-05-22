@@ -36,10 +36,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
-
 <body>
-
-
 <!-- backtotop - start -->
 <div id="thetop"></div>
 <div class="backtotop">
@@ -84,7 +81,7 @@
                 <div class="col-lg-7">
                     <ul class="header_contact_info ul_li clearfix">
                         <li><i class="fal fa-envelope"></i> rotorsmail@email.com</li>
-                        <li><i class="fal fa-phone"></i> +1-202-555-0156</li>
+                        <li><i class="fal fa-phone"></i> 069 69 13 599</li>
                     </ul>
                 </div>
 
@@ -131,7 +128,7 @@
                     <nav class="main_menu clearfix">
                         <ul class="ul_li_center clearfix">
                             <li><a href="/">Home</a></li>
-                            <li><a href="/allCars">Our Cars</a></li>
+                            <li><a href="/allCars">Cars Catalog</a></li>
                             <li><a href="/comments">Reviews</a></li>
                             <li class="active"><a href="/allBlogs">Blogs</a></li>
                             <li><a href="/contact">Contact Us</a>
@@ -198,8 +195,9 @@
                             </h3>
                             <p class="mb_15" th:text="${blog.content}"></p>
                             <a class="text_btn text-uppercase" th:href="'/blog/details/' + ${blog.id}"
-                               target="_blank"><span>Read More</span> <img src="assets/images/icons/icon_02.png"
+                               ><span>Read More</span> <img src="assets/images/icons/icon_02.png"
                                                                            alt="icon_not_found"></a>
+<!--                            target="_blank" -> Used to open page in a new Tab-->
                         </div>
                     </div>
                 </div>
@@ -245,7 +243,7 @@
                             </li>
                             <li><i class="fas fa-clock"></i> 8:00am-9:30pm</li>
                             <li><i class="fas fa-envelope"></i> <strong>rotorseml@eml.fr</strong></li>
-                            <li><i class="fas fa-phone"></i> <strong>069 69 13 566</strong></li>
+                            <li><i class="fas fa-phone"></i> <strong>069 69 13 599</strong></li>
                         </ul>
                     </div>
                 </div>
@@ -255,7 +253,8 @@
                         <h3 class="footer_widget_title">Information:</h3>
                         <ul class="ul_li_block clearfix">
                             <li><a href="/allCars"><i class="fal fa-angle-right"></i> Cars Catalog</a></li>
-                            <li><a href="/allBlogs"><i class="fal fa-angle-right"></i>Blog</a></li>
+                            <li><a href="/allBlogs"><i class="fal fa-angle-right"></i> Blog</a></li>
+                            <li><a href="/about"><i class="fal fa-angle-right"></i> About Us</a></li>
                             <li><a href="/contact"><i class="fal fa-angle-right"></i> Contact Us</a></li>
                         </ul>
                     </div>

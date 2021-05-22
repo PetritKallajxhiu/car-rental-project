@@ -2,7 +2,6 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -36,8 +35,9 @@
     <!-- custom - css include -->
     <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 
-</head>
 
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
 
 <body>
 <!-- backtotop - start -->
@@ -118,11 +118,12 @@
                 <div class="col-lg-6 col-md-12">
                     <nav class="main_menu clearfix">
                         <ul class="ul_li_center clearfix">
-                            <li class="active"><a href="/">Home</a></li>
-                            <li><a href="/allCars">Our Cars</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/allCars">Cars Catalog</a></li>
                             <li><a href="/comments">Reviews</a></li>
                             <li><a href="/allBlogs">Blogs</a></li>
-                            <li><a href="/contact">Contact Us</a></li>
+                            <li><a href="/contact">Contact Us</a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -148,27 +149,28 @@
                 <div class="col-lg-4 col-md-8 col-sm-10 col-xs-12">
                     <div class="feature_vehicle_item mt-0 ml-0" data-aos="fade-up" data-aos-delay="100">
                         <h3 class="item_title mb-0">
-                            <a href="#!" th:text="${choosedCar.getName()}"></a>
+                            <a th:href="'/details/'+${selectedCar.getId()}" th:text="${selectedCar.getName()}"></a>
                         </h3>
                         <div class="item_image position-relative">
-                            <a class="image_wrap" href="#!">
-                                <img th:src="'/api/files/'+${choosedCar.getPhoto()}" alt="image_not_found">
+                            <a class="image_wrap" th:href="'/details/'+${selectedCar.id}">
+                                <img th:src="'/api/files/'+${selectedCar.getPhoto()}" alt="image_not_found">
                             </a>
-                            <span class="item_price bg_default_blue" th:text="'$'+${choosedCar.getPrice()}"></span>
+                            <span class="item_price bg_default_blue" th:text="'$'+${selectedCar.getPrice()}"></span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12">
                     <div class="reservation_form">
-                        <form action="#">
+                        <form th:action="@{/reserve}" method="post" th:object="${reservation}">
+                            <input th:type="hidden" th:field="*{carId}">
                             <div class="row">
                                 <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form_item" data-aos="fade-up" data-aos-delay="100">
                                         <h4 class="input_title">Pick Up Location</h4>
                                         <div class="position-relative">
-                                            <input id="location" type="text" name="location"
-                                                   placeholder="Rruga Elbasanit, Tirane">
+                                            <input id="pickUpLocation" type="text" th:field="*{pickUpLocation}"
+                                                   name="pickUpLocation" placeholder="Pick Up Location">
                                         </div>
                                     </div>
                                 </div>
@@ -176,14 +178,14 @@
                                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form_item" data-aos="fade-up" data-aos-delay="200">
                                         <h4 class="input_title">Pick up Date</h4>
-                                        <input type="date" name="date">
+                                        <input type="date" class="datepicker" name="date" th:field="*{pickUpDate}">
                                     </div>
                                 </div>
 
                                 <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form_item" data-aos="fade-up" data-aos-delay="300">
                                         <h4 class="input_title">Pick Up Time</h4>
-                                        <input type="text" name="time">
+                                        <input type="text" name="pickUpTime" th:field="*{pickUpTime}">
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +194,7 @@
                                     <h4 class="input_title">Final Price</h4>
                                     <div class="position-relative">
                                         <input id="finalPrice" type="number" name="finalPrice"
-                                               placeholder="Final price">
+                                               placeholder="Final price" th:field="*{finalPrice}">
                                     </div>
                                 </div>
                             </div>
@@ -205,26 +207,30 @@
                                 <div class="row">
                                     <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
                                         <div class="form_item" data-aos="fade-up" data-aos-delay="400">
-                                            <input type="text" name="name" placeholder="Name">
+                                            <input type="text" name="clientName" placeholder="Name"
+                                                   th:field="*{clientName}">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
                                         <div class="form_item" data-aos="fade-up" data-aos-delay="600">
-                                            <input type="text" name="email" placeholder="E-mail address">
+                                            <input type="text" name="clientEmail" th:field="*{clientEmail}"
+                                                   placeholder="E-mail address">
                                         </div>
                                     </div>
 
                                     <div class="col-lg-6 col-md-12 col-xs-12 col-xs-12">
                                         <div class="form_item" data-aos="fade-up" data-aos-delay="700">
-                                            <input type="text" name="tel" placeholder="Phone Number">
+                                            <input type="text" name="phoneNumber" th:field="*{phoneNumber}"
+                                                   placeholder="Phone Number">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="form_item" data-aos="fade-up" data-aos-delay="800">
-                                    <textarea name="comment"
-                                              placeholder="Comment"></textarea>
+                                                                                <textarea name="comment"
+                                                                                          th:field="*{comment}"
+                                                                                          placeholder="Comment"></textarea>
                                 </div>
 
                                 <div data-aos="fade-up" data-aos-delay="100">
@@ -250,7 +256,7 @@
                                                                  alt="icon_not_found"></button>
                                     </div>
                                 </div>
-                            </div>
+
                         </form>
                     </div>
                 </div>
@@ -277,8 +283,8 @@
                     <div class="footer_about" data-aos="fade-up" data-aos-delay="100">
                         <div class="brand_logo mb_30">
                             <a href="index.html">
-                                <img src="/assets/images/logo/logo_02_1x.png"
-                                     srcset="/assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
+                                <img src="assets/images/logo/logo_02_1x.png"
+                                     srcset="assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
                             </a>
                         </div>
                         <p class="mb_15">
@@ -310,7 +316,7 @@
                         <ul class="ul_li_block clearfix">
                             <li><a href="/allCars"><i class="fal fa-angle-right"></i> Cars Catalog</a></li>
                             <li><a href="/allBlogs"><i class="fal fa-angle-right"></i> Blog</a></li>
-                            <li><a href="#!"><i class="fal fa-angle-right"></i> About Us</a></li>
+                            <li><a href="/about"><i class="fal fa-angle-right"></i> About Us</a></li>
                             <li><a href="/contact"><i class="fal fa-angle-right"></i> Contact Us</a></li>
                         </ul>
                     </div>
@@ -382,9 +388,16 @@
 <!-- mobile menu - jquery include -->
 <script src="/assets/js/mCustomScrollbar.js"></script>
 
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+
 <!-- custom - jquery include -->
 <script src="/assets/js/custom.js"></script>
+<script>
 
+$(document).ready(function (){
+    //$("input.datepicker").datepicker({ format: 'yyyy-dd-mm' });
+})
+</script>
 
 </body>
 </html>

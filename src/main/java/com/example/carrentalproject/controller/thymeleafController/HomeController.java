@@ -36,9 +36,17 @@ public class HomeController {
 
         return "index_2";
     }
+
     @GetMapping("/contact")
-    public String contact(){
+    public String contact() {
         return "contact";
+    }
+
+    @GetMapping("/about")
+    public String aboutUs(ModelMap modelMap) {
+        var comments = commentServices.findAll();
+        modelMap.addAttribute("comments", comments);
+        return "about";
     }
 
 
