@@ -191,7 +191,7 @@
                                 <li>by <a th:text="${blog.author}"></a></li>
                             </ul>
                             <h3 class="item_title">
-                                <a href="blog_details.html" target="_blank" th:text="${blog.title}"></a>
+                                <a th:href="'/blog/details/'+${blog.id}" th:text="${blog.title}"></a>
                             </h3>
                             <p class="mb_15" th:text="${blog.content}"></p>
                             <a class="text_btn text-uppercase" th:href="'/blog/details/' + ${blog.id}"

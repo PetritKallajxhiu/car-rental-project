@@ -107,7 +107,7 @@
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-6">
                     <div class="brand_logo">
-                        <a href="index.html">
+                        <a href="/">
                             <img src="/assets/images/logo/logo_01_1x.png" srcset="/assets/images/logo/logo_01_2x.png 2x"
                                  alt="logo_not_found">
                             <img src="/assets/images/logo/logo_02_1x.png" srcset="/assets/images/logo/logo_02_2x.png 2x"
@@ -246,11 +246,9 @@
                                             </div>
                                             <h4 class="admin_name" th:text="${comment.name}"></h4>
                                             <ul class="rating_star ul_li_center clearfix">
-                                                <li th:each="i : ${#numbers.sequence( 1, comment.rate)}" class="active">
-                                                    <i
-                                                            class="fas fa-star"></i></li>
-                                                <!--<li th:with="max=${5 - comment.rate}" th:each="j : ${#numbers.sequence( 1, 1)}"><i class="fas fa-star"></i></li>-->
-
+                                                <li th:each="i : ${#numbers.sequence(1, comment.rate)}" class="active">
+                                                    <i class="fas fa-star"></i>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -286,8 +284,8 @@
                     <div class="footer_about" data-aos="fade-up" data-aos-delay="100">
                         <div class="brand_logo mb_30">
                             <a href="index.html">
-                                <img src="assets/images/logo/logo_02_1x.png"
-                                     srcset="assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
+                                <img src="/assets/images/logo/logo_02_1x.png"
+                                     srcset="/assets/images/logo/logo_02_2x.png 2x" alt="logo_not_found">
                             </a>
                         </div>
                         <p class="mb_15">
